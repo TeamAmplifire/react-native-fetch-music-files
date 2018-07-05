@@ -3,6 +3,7 @@
 package com.fetchmusicfiles.react_native_fetch_music_files;
 
 import android.support.annotation.Nullable;
+import com.facebook.react.bridge.Callback;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -41,7 +42,7 @@ public class react_native_fetch_music_filesModule extends ReactContextBaseJavaMo
     @ReactMethod
     public void fetchAllSongs(Callback errorCallback,
                               Callback successCallback) {
-        FetchSongList.getInstance().getAllSongs(reactAppContext);
+        FetchSongList.getInstance().getAllSongs(reactContext);
 
         if (SongCollection.getInstance().getListOfSongs().isEmpty()) {
             errorCallback.invoke("There are no Audio Files Found on This Device");
