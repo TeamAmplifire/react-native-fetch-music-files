@@ -52,6 +52,18 @@ public class react_native_fetch_music_filesModule extends ReactContextBaseJavaMo
         successCallback.invoke(new Gson().toJson(SongCollection.getInstance().getListOfSongs()));
     }
 
+    @ReactMethod
+    public void fetchRecentlyAdded(Callback errorCallback, Callback successCallback){
+        FetchSongList.getInstance().getRecentlyAdded(reactContext);
+
+        if(SongCollection.getInstance().getListOfSongs().isEmpty()) {
+            errorCallback.invoke("There are no audio files found on this device.");
+            return;
+        }
+
+        successCallback.invoke(new Gson.toJson(SongCollection.getInstance().getListOfSongs()));
+    }
+    
     private static void emitDeviceEvent(String eventName, @Nullable WritableMap eventData) {
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, eventData);
     }
