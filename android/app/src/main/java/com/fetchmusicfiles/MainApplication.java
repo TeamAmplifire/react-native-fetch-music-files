@@ -23,8 +23,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new react_native_fetch_music_filesPackage()
+        new MainReactPackage(),
+        new react_native_fetch_music_filesPackage()
       );
     }
 
